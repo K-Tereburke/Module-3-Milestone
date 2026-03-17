@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^/workspaces/Module-3-Milestone/\\.venv/bin/python - <<'PY'\nimport pandas as pd\n\ndf = pd\\.read_csv\\('/workspaces/Module-3-Milestone/zillow_dataset\\.csv'\\)\nmissing = \\(df\\.isna\\(\\)\\.mean\\(\\)\\*100\\)\\.sort_values\\(ascending=False\\)\nuniq = df\\.nunique\\(dropna=True\\)\\.sort_values\\(ascending=False\\)\n\nprint\\('shape', df\\.shape\\)\nprint\\('\\\\nTop 12 missing %:'\\)\nprint\\(missing\\.head\\(12\\)\\.to_string\\(\\)\\)\nprint\\('\\\\nNear-unique columns \\(>95% unique of rows\\):'\\)\nthreshold = 0\\.95\\*len\\(df\\)\nnear_unique = \\[c for c in df\\.columns if df\\[c\\]\\.nunique\\(dropna=True\\) > threshold\\]\nprint\\(near_unique\\)\nprint\\('\\\\nCategorical-like cols \\(object/bool \\+ id-like\\):'\\)\nobj = df\\.select_dtypes\\(include=\\['object','bool'\\]\\)\\.columns\\.tolist\\(\\)\nid_like = \\[c for c in df\\.columns if c\\.endswith\\('id'\\) or c in \\['parcelid','fips','rawcensustractandblock','censustractandblock'\\]\\]\nprint\\(sorted\\(set\\(obj \\+ id_like\\) - \\{'taxvaluedollarcnt'\\}\\)\\)\nprint\\('\\\\nSelected columns quick stats:'\\)\nfor c in \\['taxvaluedollarcnt','calculatedfinishedsquarefeet','yearbuilt','propertylandusetypeid'\\]:\n    print\\(c, 'missing%', round\\(df\\[c\\]\\.isna\\(\\)\\.mean\\(\\)\\*100,2\\), 'unique', df\\[c\\]\\.nunique\\(dropna=True\\)\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
